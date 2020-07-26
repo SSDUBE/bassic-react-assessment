@@ -48,7 +48,7 @@ const CarsDetailsDisplay = ({
 
   const filterByAmount = React.useCallback(
     function (data: VehiclesProps[]) {
-      if (fromSelect.amount < toSelect.amount) {
+      if (fromSelect.amount <= toSelect.amount) {
         return data.filter(
           (vehicle) =>
             vehicle.price >= fromSelect.amount &&
@@ -56,7 +56,7 @@ const CarsDetailsDisplay = ({
         );
       }
       alert('Minimum price must be lower than maximum price.');
-      return data;
+      return [];
     },
     [fromSelect, toSelect]
   );
