@@ -73,7 +73,7 @@ const AuthPaper = ({children, header}: Props) => {
           <Box>
             <Typography variant="h3">Welcome</Typography>
             <Typography variant="h3">To</Typography>
-            <Typography variant="h3">Cars</Typography>
+            <Typography variant="h3">Auto Channel</Typography>
           </Box>
           <Typography variant="h1" className={classes.aboutMyTeam}>
             Basic React Assessment for Employment Candidate
