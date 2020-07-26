@@ -24,21 +24,13 @@ function createNetworkLayer(
 ): INetwork {
   const network = new RelayNetworkLayer(
     [
-      /*
-      cacheMiddleware({
-        size: 100, // max 100 requests
-        ttl: 900000, // 15 minutes
-      }),
-      */
       urlMiddleware({
         url: () => Promise.resolve(`${serverUri}/graphql`),
         headers: {
           Authorization: `Bearer ${getAuthTokenFn()}`,
         },
       }),
-      // IS_DEV_ENV ? loggerMiddleware() : null,
       IS_DEV_ENV ? errorMiddleware() : null,
-      // IS_DEV_ENV ? perfMiddleware() : null,
       retryMiddleware({
         fetchTimeout: 45000,
         retryDelays: [3200, 6400, 12800],
@@ -87,7 +79,6 @@ function createNetworkLayer(
           } else {
             // Report error
             console.log('something went wrong ', ex);
-            // bugsnagClient.notify(ex);
           }
 
           throw ex;

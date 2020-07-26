@@ -4,19 +4,6 @@ import {
   Theme,
 } from '@material-ui/core/styles';
 
-// declare module '@material-ui/core/styles/createMuiTheme' {
-//   interface Theme {
-//     error: {
-//       color: string;
-//     };
-//   }
-//   interface ThemeOptions {
-//     error?: {
-//       color?: string;
-//     };
-//   }
-// }
-
 export const baseTheme: Theme = createMuiTheme({
   spacing: (factor) => `${0.5 * factor}rem`,
   palette: {

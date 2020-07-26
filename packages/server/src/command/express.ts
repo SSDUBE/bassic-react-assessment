@@ -1,21 +1,17 @@
 import express from 'express';
 import {ApolloServer} from 'apollo-server-express';
-// import OpentracingExtension from 'apollo-opentracing';
 import bodyParser from 'body-parser';
 import schema from '../schema';
-// import tracer from '../tracer';
 
 import cors from 'cors';
 import helmet from 'helmet';
-// import UserService from '../services/userService';
 import jwt from 'jsonwebtoken';
 import {createContext} from '../util';
 import config from '../config';
 import signupUser from '../routes/signupUser';
 import signinUser from '../routes/signinUser';
 import authenticateJWT from '../routes/authenticateJWT';
-import {Response, NextFunction, Request} from 'express';
-// import {Response, NextFunction, Request} from 'express';
+import {Response} from 'express';
 
 const secret = config.get('oauth.secret');
 const app = express();
@@ -29,10 +25,6 @@ app.get('/', (_req, res) => res.send('Hello world'));
 app.post('/graphql', authenticateJWT);
 app.post('/signin', signinUser);
 app.use('/signup', signupUser);
-// app.use('/verifyToken', (req: Request, res: Response, next: NextFunction) => {
-//   authenticateJWT(req, res, next, true);
-//   // res.send('Token valid');
-// });
 
 const apolloServer = new ApolloServer({
   schema,
@@ -66,23 +58,8 @@ const apolloServer = new ApolloServer({
     }
     return createContext(req);
   },
-  // TODO: disable these in future
-  introspection: true,
+  // introspection: true,
   playground: true,
-  // This allows us to easily log errors but
-  // replaces a lot of the useful error logic apollo-server already does
-  // formatError,
-  // @ts-ignore
-  // extensions: [
-  //   () =>
-  //     new OpentracingExtension({
-  //       server: tracer,
-  //       local: tracer,
-  //       shouldTraceRequest: (_info: any) => {
-  //         return true;
-  //       },
-  //     }),
-  // ],
 });
 
 apolloServer.applyMiddleware({app, path: '/graphql', bodyParserConfig: true});

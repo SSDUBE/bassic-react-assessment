@@ -53,6 +53,7 @@ interface Props {
 
 const VehiclesCard = ({vehicle, setAddToCart}: Props) => {
   const classes = useStyles();
+
   const [src, setSrc] = React.useState(
     `https://warpfrontendtestserver.herokuapp.com/public${vehicle.img.replace(
       '/images',
@@ -62,7 +63,9 @@ const VehiclesCard = ({vehicle, setAddToCart}: Props) => {
 
   function handleAddToCart() {
     // @ts-ignore
-    setAddToCart((prevState) => [...prevState, vehicle]);
+    setAddToCart((prevState) => {
+      return [...prevState, vehicle];
+    });
   }
 
   const noImage =

@@ -1,5 +1,4 @@
 import React from 'react';
-// import PrimarySearchAppBar from './modules/AppBar/AppBar';
 import Home from './modules/home/Home';
 import {SignIn, SignUp} from './modules/auth';
 import {

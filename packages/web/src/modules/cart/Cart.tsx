@@ -46,8 +46,6 @@ const Cart = ({vehicles, setAddToCart}: Props) => {
 
   function removeFromCart(index: number) {
     const removed = vehicles.filter((_, i) => i !== index);
-    console.log(index);
-    console.log(removed);
     setAddToCart(removed);
   }
 

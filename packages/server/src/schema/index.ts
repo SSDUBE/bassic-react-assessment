@@ -1,6 +1,5 @@
 import {GraphQLNonNull, GraphQLObjectType, GraphQLSchema} from 'graphql';
 
-// import Mutations from './models/mutations';
 import {nodeField} from './Relay';
 import Viewer from './models/viewer.graph';
 
@@ -16,12 +15,6 @@ const query = new GraphQLObjectType({
   }),
 });
 
-// const mutation = new GraphQLObjectType({
-//   name: 'Mutations',
-//   fields: Mutations,
-// });
-
 export default new GraphQLSchema({
   query,
-  // mutation,
 });

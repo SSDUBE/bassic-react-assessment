@@ -16,7 +16,6 @@ import {AuthContext} from '../../context/AuthContext';
 const useStyles = makeStyles((theme) => ({
   root: {
     background: theme.palette.primary.main,
-    // display: 'flex',
     height: '100vh',
     overflow: 'auto',
   },
@@ -41,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'none',
     border: `1px solid ${theme.palette.primary.main}`,
     borderRadius: '10px',
-    // height: '30px',
   },
   headerContainer: {
     display: 'flex',

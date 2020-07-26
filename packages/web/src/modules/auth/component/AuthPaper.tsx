@@ -73,11 +73,10 @@ const AuthPaper = ({children, header}: Props) => {
           <Box>
             <Typography variant="h3">Welcome</Typography>
             <Typography variant="h3">To</Typography>
-            <Typography variant="h3">MyTeam</Typography>
+            <Typography variant="h3">Cars</Typography>
           </Box>
           <Typography variant="h1" className={classes.aboutMyTeam}>
-            MyTeam is where you manage your team activity. With MyTeam you able
-            to manage your team efficiently, share updates and stay in the loop.
+            Basic React Assessment for Employment Candidate
           </Typography>
         </Box>
       </Box>

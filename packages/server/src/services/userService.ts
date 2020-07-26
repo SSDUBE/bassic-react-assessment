@@ -12,10 +12,13 @@ export default class UserService {
     return User.query(knex).context({context}).findOne({username});
   }
 
-
   public static async createUser(user: any, context: Context) {
-    const [role] = await Role.query(knex).context({context}).where('name', 'user')
-    return await User.query(knex).context(context).insertGraphAndFetch({...user, roles: {roleId: role.id}});
+    const [role] = await Role.query(knex)
+      .context({context})
+      .where('name', 'user');
+    return await User.query(knex)
+      .context(context)
+      .insertGraphAndFetch({...user, roles: {roleId: role.id}});
   }
 
   public static async registerUser(data: any, context: Context) {
