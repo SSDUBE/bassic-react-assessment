@@ -16,8 +16,11 @@ import BounceLoader from 'react-spinners/BounceLoader';
 import {theme} from '../../Theme';
 
 const Schema = Yup.object().shape({
-  // username: Yup.string().required('Email is required'),
-  // password: Yup.string().required('Password is required'),
+  username: Yup.string().required('Email is required'),
+  password: Yup.string().required('Password is required'),
+  repeatPassword: Yup.string()
+    .required('Password confirmation is required')
+    .oneOf([Yup.ref('password')], 'Passwords do not match'),
 });
 
 const useStyles = makeStyles((theme) => ({
@@ -74,8 +77,8 @@ const SignUp = () => {
         onSubmit={async (values, {setStatus}) => {
           try {
             const response = await SignUp({
-              username: 'ssdube41@gmail.com',
-              password: '123',
+              username: values.username,
+              password: values.password,
             });
 
             // @ts-ignore
@@ -125,6 +128,7 @@ const SignUp = () => {
               autoComplete="off"
               label="Password"
               name="password"
+              type="password"
               variant="outlined"
               onChange={handleChange}
               className={clsx(classes.margin, classes.textField)}
@@ -137,7 +141,8 @@ const SignUp = () => {
               component={TextField}
               autoComplete="off"
               label="Repeat-password"
-              name="repeatpassword"
+              name="repeatPassword"
+              type="password"
               variant="outlined"
               onChange={handleChange}
               className={clsx(classes.margin, classes.textField)}

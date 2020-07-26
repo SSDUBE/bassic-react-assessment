@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
+import {VehiclesProps} from '../../../utils/Utils';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     width: '490px',
   },
   cover: {
-    width: '125px',
+    width: '160px',
     height: '130px',
     marginLeft: theme.spacing(1),
   },
@@ -46,18 +47,33 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface Props {
-  vehicle: any;
+  vehicle: VehiclesProps;
+  setAddToCart: React.Dispatch<React.SetStateAction<never[]>>;
 }
 
-const VehiclesCard = ({vehicle}: Props) => {
+const VehiclesCard = ({vehicle, setAddToCart}: Props) => {
   const classes = useStyles();
+  const [src, setSrc] = React.useState(
+    `https://warpfrontendtestserver.herokuapp.com/public${vehicle.img.replace(
+      '/images',
+      ''
+    )}`
+  );
 
+  function handleAddToCart() {
+    // @ts-ignore
+    setAddToCart((prevState) => [...prevState, vehicle]);
+  }
+
+  const noImage =
+    'https://image.shutterstock.com/image-vector/no-image-vector-symbol-missing-260nw-1310632172.jpg';
   return (
     <Card className={classes.root}>
       <img
         className={classes.cover}
-        src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"
-        alt={vehicle.manufacturer}
+        src={src}
+        alt={'alt-face'}
+        onError={() => setSrc(noImage)}
       />
       <Box className={classes.details}>
         <Typography
@@ -83,6 +99,7 @@ const VehiclesCard = ({vehicle}: Props) => {
           size="large"
           color="primary"
           className={classes.button}
+          onClick={() => handleAddToCart()}
         >
           Add to Cart
         </Button>

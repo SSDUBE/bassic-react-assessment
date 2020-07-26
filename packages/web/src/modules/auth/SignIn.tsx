@@ -90,7 +90,6 @@ const SignIn = () => {
         }) => (
           <Form className={classes.formInput}>
             <Field
-              // error={errors.username ? true : false}
               component={TextField}
               autoComplete="off"
               label="Email"
@@ -104,12 +103,11 @@ const SignIn = () => {
               }}
             />
             <Field
-              // error={errors.password ? true : false}
               component={TextField}
-              autoComplete="current-password"
+              autoComplete="off"
               label="Password"
               name="password"
-              // type="password"
+              type="password"
               variant="outlined"
               onChange={handleChange}
               className={clsx(classes.margin, classes.textField)}
