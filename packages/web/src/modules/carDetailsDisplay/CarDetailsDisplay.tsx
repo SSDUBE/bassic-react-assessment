@@ -62,7 +62,10 @@ const CarsDetailsDisplay = ({
   );
 
   React.useEffect(() => {
-    if (manufactureSelect.manufacturer !== 'Any') {
+    if (
+      manufactureSelect.manufacturer !== 'Any' &&
+      bodyStyleSelect.body === 'Any'
+    ) {
       const vehicleFilter = vehicles.filter(
         (vehicle) => vehicle.manufacturer === manufactureSelect.manufacturer
       );
@@ -87,10 +90,14 @@ const CarsDetailsDisplay = ({
       );
       setVehicleDataArray(filterByAmount(bodyVehicleFilter));
     } else {
-      console.log(manufactureSelect.manufacturer, bodyStyleSelect.body);
       setVehicleDataArray(filterByAmount(vehicles));
     }
-  }, [manufactureSelect, bodyStyleSelect, vehicles, filterByAmount]);
+  }, [
+    manufactureSelect.manufacturer,
+    bodyStyleSelect.body,
+    vehicles,
+    filterByAmount,
+  ]);
 
   if (vehicleDataArray.length === 0) {
     return (
