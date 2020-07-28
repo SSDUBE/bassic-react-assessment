@@ -14,35 +14,23 @@
     "@types/node": "^14.0.25",
     "@types/react": "^16.9.43",
     "@types/react-dom": "^16.9.8",
-    "babel-plugin-relay": "^10.0.1",
-    "formik": "^2.1.5",
-    "formik-material-ui": "^2.0.1",
     "graphql": "^15.3.0",
     "lodash": "^4.17.19",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-relay": "^10.0.1",
-    "react-relay-network-modern": "^4.7.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-spinners": "^0.9.0",
     "react-use": "^15.3.3",
-    "relay-compiler": "^10.0.1",
-    "relay-compiler-language-typescript": "^12.0.4",
-    "relay-hooks": "^3.5.2",
-    "relay-runtime": "^10.0.1",
-    "typescript": "^3.9.7",
-    "yup": "^0.29.1"
+    "typescript": "^3.9.7"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prettier": "prettier --write \"./src/**/*.{tsx,ts,js,css}\"",
-    "update-schema": "graphql get-schema --project assessment",
-    "relay": "relay-compiler --src ./src --schema src/schemas/schema.graphql --language typescript"
+    "prettier": "prettier --write \"./src/**/*.{tsx,ts,js,css}\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -67,8 +55,6 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.158",
-    "@types/react-relay": "^7.0.8",
-    "@types/react-router-dom": "^5.1.5",
-    "@types/yup": "^0.29.3"
+    "@types/react-router-dom": "^5.1.5"
   }
 }

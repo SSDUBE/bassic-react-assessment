@@ -9,9 +9,7 @@ import CarDetailsDisplay from '../carDetailsDisplay/CarDetailsDisplay';
 import {theme} from '../../Theme';
 import {VehiclesProps, amountData} from '../../utils/Utils';
 import ComboBox from './components/ComboBox';
-import Button from '@material-ui/core/Button';
 import _ from 'lodash';
-import {AuthContext} from '../../context/AuthContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,7 +60,6 @@ const Home = () => {
     amount: 10000000,
     id: '10 000 000',
   });
-  const {SignOut} = React.useContext(AuthContext);
 
   function getManufacturerType(): any {
     const options = _.uniqBy(data.allVehicles, 'manufacturer');
@@ -71,7 +68,11 @@ const Home = () => {
 
   function getBodyType(): any {
     if (manufactureSelect.manufacturer !== 'Any') {
-      const options = _.intersectionWith(data.allVehicles, [manufactureSelect]);
+      const options = data.allVehicles.filter(
+        (vehicle: VehiclesProps) =>
+          vehicle.manufacturer === manufactureSelect.manufacturer
+      );
+
       return [{body: 'Any'}, ...options];
     }
     return [{body: 'Any'}, ...data.allVehicles];
@@ -81,15 +82,6 @@ const Home = () => {
     <Box className={classes.root}>
       <Box className={classes.headerContainer}>
         <Typography variant="h2">Browse Vehicles</Typography>
-        <Button
-          variant="contained"
-          size="large"
-          color="primary"
-          className={classes.button}
-          onClick={() => SignOut()}
-        >
-          SignOut
-        </Button>
       </Box>
       <Box className={classes.carFilter}>
         {error ? (
